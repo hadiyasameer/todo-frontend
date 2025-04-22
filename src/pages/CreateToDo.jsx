@@ -14,9 +14,8 @@ function CreateTodo() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted"); // Check this in the browser console
-
-    axios.post('http://localhost:5002/todo', todo)
-      .then(() => {
+    axios.post('https://todo-backend-rbvn.onrender.com/todo', todo)
+    .then(() => {
         alert('To-Do created successfully!');
         navigate('/');
       })
