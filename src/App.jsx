@@ -5,7 +5,6 @@ import ShowToDo from './pages/ShowToDo'
 import EditToDo from './pages/EditToDo'
 import DeleteToDo from './pages/DeleteToDo'
 import CreateTodo from './pages/CreateToDo';
-import { Route } from 'react-router-dom'
 
 function App() {
   return (
