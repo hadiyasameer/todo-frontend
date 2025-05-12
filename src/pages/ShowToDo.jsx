@@ -12,7 +12,7 @@ function ShowToDo() {
 
     useEffect(() => {
         setLoading(true);
-        axios.get(`http://localhost:3000/todo/${id}`)
+        axios.get(`${process.env.REACT_APP_BASE_URL}/${id}`)
             .then(res => {
                 setTodo(res.data);
                 setLoading(false);
@@ -26,7 +26,7 @@ function ShowToDo() {
     const handleDelete = () => {
         const confirmDelete = window.confirm('Are you sure you want to delete this To-Do?');
         if (confirmDelete) {
-            axios.delete(`http://localhost:3000/todo/${id}`)
+            axios.delete(`${process.env.REACT_APP_BASE_URL}/${id}`)
                 .then(() => {
                     alert('To-Do deleted successfully!');
                     navigate('/');

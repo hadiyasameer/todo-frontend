@@ -4,7 +4,7 @@ import axios from '../utils/axiosConfig';
 
 function CreateTodo() {
   const navigate = useNavigate();
-  const [todo, setTodo] = useState({ title: '', description: '' });
+  const [todo, setTodo] = useState({ title: '', description: '' ,status: '', duedate: ''});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -13,9 +13,9 @@ function CreateTodo() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted"); // Check this in the browser console
-    axios.post('https://todo-backend-rbvn.onrender.com/todo', todo)
-    .then(() => {
+    console.log("Form submitted"); 
+    axios.post(`${process.env.REACT_APP_BASE_URL}`, todo)
+      .then(() => {
         alert('To-Do created successfully!');
         navigate('/');
       })
@@ -28,14 +28,7 @@ function CreateTodo() {
       <form onSubmit={handleSubmit}>
         <div style={{ marginBottom: '10px' }}>
           <label>Title:</label>
-          <input
-            type="text"
-            name="title"
-            value={todo.title}
-            onChange={handleChange}
-            required
-            style={{ width: '100%', padding: '8px' }}
-          />
+          <input type="text" name="title" value={todo.title} onChange={handleChange} required style={{ width: '100%', padding: '8px' }} />
         </div>
         <div style={{ marginBottom: '10px' }}>
           <label>Description:</label>
@@ -48,7 +41,14 @@ function CreateTodo() {
             style={{ width: '100%', padding: '8px' }}
           ></textarea>
         </div>
-        <button type="submit" style={{ padding: '10px 20px' }}>Create</button>
+        <div style={{ marginBottom: '10px' }}>
+          <label>Status:</label>
+          <input type="text" name="status" value={todo.status} onChange={handleChange} required style={{ width: '100%', padding: '8px' }} />
+        </div>
+        <div style={{ marginBottom: '10px' }}>
+          <label>Due Date:</label>
+          <input type="date" name="duedate" value={todo.duedate} onChange={handleChange} required style={{ width: '100%', padding: '8px' }} />
+        </div>        <button type="submit" style={{ padding: '10px 20px' }}>Create</button>
       </form>
     </div>
   );

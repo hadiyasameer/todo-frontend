@@ -7,14 +7,14 @@ function EditTodo() {
     const { id } = useParams();
     const navigate = useNavigate();
     const [todo, setTodo] = useState({ title: '', description: '', status: '', duedate: '' });
-    const [loading, setLoading] = useState(true); // Loading state for the API call
+    const [loading, setLoading] = useState(true); 
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/todo/${id}`)
+        axios.get(`${process.env.REACT_APP_BASE_URL}/${id}`)
             .then(res => {
                 const formattedTodo = {
                     ...res.data,
-                    duedate: new Date(res.data.duedate).toISOString().split('T')[0]  // Date format: YYYY-MM-DD
+                    duedate: new Date(res.data.duedate).toISOString().split('T')[0]  
                 };
                 setTodo(formattedTodo);
                 setLoading(false);
@@ -34,7 +34,7 @@ function EditTodo() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost:3000/todo/${id}`, todo)
+        axios.put(`${process.env.REACT_APP_BASE_URL}/${id}`, todo)
             .then(() => {
                 alert('To-Do updated successfully!');
                 navigate('/show');
@@ -51,14 +51,7 @@ function EditTodo() {
             <form onSubmit={handleSubmit}>
                 <div style={{ marginBottom: '10px' }}>
                     <label>Title:</label>
-                    <input
-                        type="text"
-                        name="title"
-                        value={todo.title}
-                        onChange={handleChange}
-                        required
-                        style={{ width: '100%', padding: '8px' }}
-                    />
+                    <input type="text" name="title" value={todo.title}  onChange={handleChange} required  style={{ width: '100%', padding: '8px' }} />
                 </div>
                 <div style={{ marginBottom: '10px' }}>
                     <label>Description:</label>
