@@ -37,7 +37,7 @@ function EditTodo() {
         axiosInstance.put(`/todo/${id}`, todo)
             .then(() => {
                 alert('To-Do updated successfully!');
-                navigate('/show');
+                navigate('/');
             })
             .catch(err => console.error("Error updating todo:", err));
     };
