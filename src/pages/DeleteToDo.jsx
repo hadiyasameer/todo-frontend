@@ -16,7 +16,9 @@ function DeleteToDo() {
         if (window.confirm('Are you sure you want to delete this item?')) {
             axiosInstance.delete(`/todo/${id}`)
                 .then(() => {
-                    setTodos(prev => prev.filter(todo => todo._id !== id));
+                    axiosInstance.get('/todo/todos') // Re-fetch the todos after delete
+                        .then(res => setTodos(res.data))
+                        .catch(err => console.error("Error fetching updated todos:", err));
                     alert('To-Do deleted successfully!');
                 })
                 .catch(err => console.error("Delete failed:", err));
