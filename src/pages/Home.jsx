@@ -12,6 +12,16 @@ function Home() {
             .catch(err => console.error("Error fetching todos:", err));
     }, []);
 
+    const handleDelete = (id) => {
+        if (window.confirm('Are you sure you want to delete this to-do?')) {
+            axiosInstance.delete(`/todo/${id}`)
+                .then(() => {
+                    setTodos(todos.filter(todo => todo._id !== id));
+                    alert('To-Do deleted successfully!');
+                })
+                .catch(err => console.error("Error deleting todo:", err));
+        }
+    };
 
 
     return (
@@ -44,9 +54,12 @@ function Home() {
                                 <Link to={`/edit/${todo._id}`} title="Edit" style={{ marginRight: '10px' }}>
                                     <FaEdit color="blue" />
                                 </Link>
-                                <Link to={`/delete/${todo._id}`} title="Delete" style={{ marginRight: '10px' }}>
+                                <button
+                                    onClick={() => handleDelete(todo._id)}
+                                    title="Delete"
+                                    style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
                                     <FaTrash color="red" />
-                                </Link>
+                                </button>
                             </td>
                         </tr>
                     ))}
