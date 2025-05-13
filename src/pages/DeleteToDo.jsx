@@ -14,7 +14,7 @@ function DeleteToDo() {
 
     const handleDelete = (id) => {
         if (window.confirm('Are you sure you want to delete this item?')) {
-            axiosInstance.delete(`/todo/todos/${id}`)
+            axiosInstance.delete(`/todo/${id}`)
                 .then(() => {
                     setTodos(prev => prev.filter(todo => todo._id !== id));
                     alert('To-Do deleted successfully!');
