@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { FaEdit, FaTrash } from 'react-icons/fa';
-import { axiosInstance } from '../axios/axiosinstance';
+import  axiosInstance  from '../axios/axiosinstance';
 import Spinner from '../components/Spinner';
 
 function ShowToDo() {

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { FaEdit, FaTrash, FaInfoCircle, FaPlus } from 'react-icons/fa';
 import React, { useEffect, useState } from 'react';
-import { axiosInstance } from '../axios/axiosinstance';
+import axiosInstance  from '../axios/axiosinstance';
 
 function Home() {
     const [todos, setTodos] = useState([]);

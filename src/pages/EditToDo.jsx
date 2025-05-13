@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { axiosInstance } from '../axios/axiosinstance';
+import axiosInstance  from '../axios/axiosinstance';
 import Spinner from '../components/Spinner';
 
 function EditTodo() {
