@@ -6,14 +6,15 @@ function DeleteToDo() {
     const [todos, setTodos] = useState([]);
 
     useEffect(() => {
-        axios.get(process.env.REACT_APP_BASE_URL)
+        axios.get(`${import.meta.env.VITE_REACT_APP_BASE_URL}`)
             .then(res => setTodos(res.data))
             .catch(err => console.error("Error fetching todos:", err));
     }, []);
 
+
     const handleDelete = (id) => {
         if (window.confirm('Are you sure you want to delete this item?')) {
-            axios.delete(`${process.env.REACT_APP_BASE_URL}/${id}`)
+            axios.delete(`${import.meta.env.VITE_REACT_APP_BASE_URL}/${id}`)
                 .then(() => {
                     setTodos(prev => prev.filter(todo => todo._id !== id));
                     alert('To-Do deleted successfully!');

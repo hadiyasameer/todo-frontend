@@ -7,7 +7,7 @@ function Home() {
     const [todos, setTodos] = useState([]);
 
     useEffect(() => {
-        axios.get(process.env.REACT_APP_BASE_URL)
+        axios.get(`${import.meta.env.VITE_REACT_APP_BASE_URL}`)
             .then(res => setTodos(res.data))
             .catch(err => console.error("Error fetching todos:", err));
     }, []);

@@ -12,7 +12,7 @@ function ShowToDo() {
 
     useEffect(() => {
         setLoading(true);
-        axios.get(`${process.env.REACT_APP_BASE_URL}/${id}`)
+        axios.get(`${import.meta.env.VITE_REACT_APP_BASE_URL}/${id}`)
             .then(res => {
                 setTodo(res.data);
                 setLoading(false);

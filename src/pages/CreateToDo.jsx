@@ -4,7 +4,7 @@ import axios from '../utils/axiosConfig';
 
 function CreateTodo() {
   const navigate = useNavigate();
-  const [todo, setTodo] = useState({ title: '', description: '' ,status: '', duedate: ''});
+  const [todo, setTodo] = useState({ title: '', description: '', status: '', duedate: '' });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -13,8 +13,8 @@ function CreateTodo() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted"); 
-    axios.post(`${process.env.REACT_APP_BASE_URL}`, todo)
+    console.log("Form submitted");
+    axios.post(`${import.meta.env.VITE_REACT_APP_BASE_URL}`, todo)
       .then(() => {
         alert('To-Do created successfully!');
         navigate('/');
