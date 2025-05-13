@@ -6,7 +6,7 @@ function DeleteToDo() {
     const [todos, setTodos] = useState([]);
 
     useEffect(() => {
-        axiosInstance.get('/todo')
+        axiosInstance.get('/todo/todos')
             .then(res => setTodos(res.data))
             .catch(err => console.error("Error fetching todos:", err));
     }, []);
