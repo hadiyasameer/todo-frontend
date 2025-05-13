@@ -14,7 +14,7 @@ function CreateTodo() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted");
-    axiosInstance.post('/todo', todo)
+    axiosInstance.post('/todo/todos', todo)
       .then(() => {
         alert('To-Do created successfully!');
         navigate('/');
