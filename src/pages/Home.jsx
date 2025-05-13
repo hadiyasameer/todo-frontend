@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
 import { FaEdit, FaTrash, FaInfoCircle, FaPlus } from 'react-icons/fa';
 import React, { useEffect, useState } from 'react';
-import axios from '../utils/axiosConfig';
+import { axiosInstance } from '../axios/axiosinstance';
 
 function Home() {
     const [todos, setTodos] = useState([]);
 
     useEffect(() => {
-        axios.get(`${import.meta.env.VITE_REACT_APP_BASE_URL}`)
+        axiosInstance.get('/todos')
             .then(res => setTodos(res.data))
             .catch(err => console.error("Error fetching todos:", err));
     }, []);
@@ -38,7 +38,7 @@ function Home() {
                             <td>{todo.title}</td>
                             <td style={{ textAlign: 'center' }}>
 
-                                <Link to={`/view/${todo._id}`} title="View Info">
+                                <Link to={`/show/${todo._id}`} title="View Info">
                                     <FaInfoCircle color="green" />
                                 </Link>
                                 <Link to={`/edit/${todo._id}`} title="Edit" style={{ marginRight: '10px' }}>

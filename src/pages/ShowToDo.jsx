@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { FaEdit, FaTrash } from 'react-icons/fa';
-import axios from '../utils/axiosConfig';
+import { axiosInstance } from '../axios/axiosinstance';
 import Spinner from '../components/Spinner';
 
 function ShowToDo() {
@@ -12,7 +12,7 @@ function ShowToDo() {
 
     useEffect(() => {
         setLoading(true);
-        axios.get(`${import.meta.env.VITE_REACT_APP_BASE_URL}/${id}`)
+        axiosInstance.get(`/todo/${id}`)
             .then(res => {
                 setTodo(res.data);
                 setLoading(false);
@@ -26,7 +26,7 @@ function ShowToDo() {
     const handleDelete = () => {
         const confirmDelete = window.confirm('Are you sure you want to delete this To-Do?');
         if (confirmDelete) {
-            axios.delete(`${process.env.REACT_APP_BASE_URL}/${id}`)
+            axiosInstance.delete(`/todo/${id}`)
                 .then(() => {
                     alert('To-Do deleted successfully!');
                     navigate('/');

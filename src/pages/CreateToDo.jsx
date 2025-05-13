@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from '../utils/axiosConfig';
+import axiosInstance from '../axios/axiosinstance'
 
 function CreateTodo() {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ function CreateTodo() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted");
-    axios.post(`${import.meta.env.VITE_REACT_APP_BASE_URL}`, todo)
+    axiosInstance.post('/todo', todo)
       .then(() => {
         alert('To-Do created successfully!');
         navigate('/');

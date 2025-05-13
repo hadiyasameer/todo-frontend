@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import axios from '../utils/axiosConfig';
+import { axiosInstance } from '../axios/axiosinstance';
 import Spinner from '../components/Spinner';
 
 function EditTodo() {
@@ -10,7 +10,7 @@ function EditTodo() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get(`${import.meta.env.VITE_REACT_APP_BASE_URL}/${id}`)
+        axiosInstance.get(`/todo/${id}`)
             .then(res => {
                 const formattedTodo = {
                     ...res.data,
@@ -34,7 +34,7 @@ function EditTodo() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`${import.meta.env.VITE_REACT_APP_BASE_URL}/${id}`, todo)
+        axiosInstance.put(`/todo/${id}`, todo)
             .then(() => {
                 alert('To-Do updated successfully!');
                 navigate('/show');

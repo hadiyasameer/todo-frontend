@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import axios from '../utils/axiosConfig';
+import axiosInstance from '../axios/axiosinstance'
 import { FaTrash } from 'react-icons/fa';
 
 function DeleteToDo() {
     const [todos, setTodos] = useState([]);
 
     useEffect(() => {
-        axios.get(`${import.meta.env.VITE_REACT_APP_BASE_URL}`)
+        axiosInstance.get('/todo')
             .then(res => setTodos(res.data))
             .catch(err => console.error("Error fetching todos:", err));
     }, []);
@@ -14,7 +14,7 @@ function DeleteToDo() {
 
     const handleDelete = (id) => {
         if (window.confirm('Are you sure you want to delete this item?')) {
-            axios.delete(`${import.meta.env.VITE_REACT_APP_BASE_URL}/${id}`)
+            axiosInstance.delete(`/todo/${id}`)
                 .then(() => {
                     setTodos(prev => prev.filter(todo => todo._id !== id));
                     alert('To-Do deleted successfully!');
