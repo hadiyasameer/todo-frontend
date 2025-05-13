@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
 import { FaEdit, FaTrash, FaInfoCircle, FaPlus } from 'react-icons/fa';
 import React, { useEffect, useState } from 'react';
-import axiosInstance  from '../axios/axiosinstance';
+import axiosInstance from '../axios/axiosinstance';
 
 function Home() {
     const [todos, setTodos] = useState([]);
 
     useEffect(() => {
-        axiosInstance.get('/todos')
+        axiosInstance.get('/todo/todos')
             .then(res => setTodos(res.data))
             .catch(err => console.error("Error fetching todos:", err));
     }, []);
