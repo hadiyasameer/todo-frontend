@@ -28,9 +28,9 @@ function Header() {
         <div>
             <Navbar bg="primary" data-bs-theme="dark">
                 <Container>
-                    <Navbar.Brand href="#home">TODO</Navbar.Brand>
+                    <Navbar.Brand as={Link} to="/">TODO</Navbar.Brand>
                     <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
+                        <Nav.Link as={Link} to="/">Home</Nav.Link>
                         <div className='nav-end gap-5'>
                             {userData.email ? (
                                 <div className="flex items-center gap-4">
