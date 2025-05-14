@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../axios/axiosinstance'
+import Header from '../components/Header';
 
 function CreateTodo() {
   const navigate = useNavigate();
@@ -23,6 +24,8 @@ function CreateTodo() {
   };
 
   return (
+    <>
+    <Header/>
     <div style={{ padding: '20px', maxWidth: '600px', margin: 'auto' }}>
       <h2>Create New To-Do</h2>
       <form onSubmit={handleSubmit}>
@@ -51,6 +54,7 @@ function CreateTodo() {
         </div>        <button type="submit" style={{ padding: '10px 20px' }}>Create</button>
       </form>
     </div>
+    </>
   );
 }
 
