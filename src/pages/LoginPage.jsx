@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { saveUser } from '../redux/userSlice';
 import Header from '../components/Header';
 
-function Login() {
+function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
@@ -38,7 +38,6 @@ function Login() {
             }
         }
     };
-
     return (
         <>
             <Header />
@@ -79,8 +78,7 @@ function Login() {
                     </Link>
                 </div>
             </div>
-        </>
-    );
+        </>)
 }
 
-export default Login;
+export default LoginPage
