@@ -7,7 +7,7 @@ function DeleteToDo() {
     const [todos, setTodos] = useState([]);
 
     useEffect(() => {
-        axiosInstance.get('/todo')
+        axiosInstance.get('/todo',{ withCredentials: true })
             .then(res => setTodos(res.data))
             .catch(err => console.error("Error fetching todos:", err));
     }, []);
@@ -15,9 +15,9 @@ function DeleteToDo() {
 
     const handleDelete = (id) => {
         if (window.confirm('Are you sure you want to delete this item?')) {
-            axiosInstance.delete(`/todo/${id}`)
+            axiosInstance.delete(`/todo/${id}`,{ withCredentials: true })
                 .then(() => {
-                    axiosInstance.get('/todo/todos',{ withCredentials: true }) // Re-fetch the todos after delete
+                    axiosInstance.get('/todo/todos',{ withCredentials: true }) 
                         .then(res => setTodos(res.data))
                         .catch(err => console.error("Error fetching updated todos:", err));
                     alert('To-Do deleted successfully!');

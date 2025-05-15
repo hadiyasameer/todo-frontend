@@ -27,7 +27,7 @@ function ShowToDo() {
     const handleDelete = () => {
         const confirmDelete = window.confirm('Are you sure you want to delete this To-Do?');
         if (confirmDelete) {
-            axiosInstance.delete(`/todo/${id}`)
+            axiosInstance.delete(`/todo/${id}`,{ withCredentials: true })
                 .then(() => {
                     alert('To-Do deleted successfully!');
                     navigate('/');

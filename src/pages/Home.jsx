@@ -9,10 +9,6 @@ function Home() {
     const [todos, setTodos] = useState([]);
 
     useEffect(() => {
-        const token = localStorage.getItem('user_token');
-        setIsLoggedIn(!!token);
-
-        if (token) {
             axiosInstance.get('/todo/todos', { withCredentials: true })
                 .then(res => {
                     setTodos(res.data);
@@ -21,12 +17,12 @@ function Home() {
                     console.error("Error fetching todos:", err);
                     setIsLoggedIn(false);
                 });
-        }
+        
     }, []);
 
     const handleDelete = (id) => {
         if (window.confirm('Are you sure you want to delete this to-do?')) {
-            axiosInstance.delete(`/todo/${id}`)
+            axiosInstance.delete(`/todo/${id}`,{ withCredentials: true })
                 .then(() => {
                     setTodos(todos.filter(todo => todo._id !== id));
                     alert('To-Do deleted successfully!');
