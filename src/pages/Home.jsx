@@ -48,16 +48,16 @@ function Home() {
                         <table border="1" cellPadding="10" cellSpacing="0" style={{ width: '100%', borderCollapse: 'collapse' }}>
                             <thead>
                                 <tr style={{ backgroundColor: '#f2f2f2' }}>
-                                    <th>No:</th>
-                                    <th>Title</th>
-                                    <th>Operations</th>
+                                    <th style={{ textAlign: 'center' }}>No:</th>
+                                    <th style={{ textAlign: 'center' }}>Title</th>
+                                    <th style={{ textAlign: 'center' }}>Operations</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {todos.map((todo, index) => (
                                     <tr key={todo._id}>
-                                        <td>{index + 1}</td>
-                                        <td>{todo.title}</td>
+                                        <td style={{ textAlign: 'center' }}>{index + 1}</td>
+                                        <td style={{ textAlign: 'center' }}>{todo.title}</td>
                                         <td style={{ textAlign: 'center' }}>
 
                                             <Link to={`/show/${todo._id}`} title="View Info">
