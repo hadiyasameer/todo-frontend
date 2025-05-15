@@ -13,7 +13,7 @@ function ShowToDo() {
 
     useEffect(() => {
         setLoading(true);
-        axiosInstance.get(`/todo/${id}`)
+        axiosInstance.get(`/todo/${id}`,{ withCredentials: true })
             .then(res => {
                 setTodo(res.data);
                 setLoading(false);

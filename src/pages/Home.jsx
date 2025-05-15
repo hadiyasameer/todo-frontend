@@ -13,7 +13,7 @@ function Home() {
         setIsLoggedIn(!!token);
 
         if (token) {
-            axiosInstance.get('/todo/todos')
+            axiosInstance.get('/todo/todos',{ withCredentials: true })
                 .then(res => setTodos(res.data))
                 .catch(err => console.error("Error fetching todos:", err));
         }

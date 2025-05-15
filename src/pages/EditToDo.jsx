@@ -35,7 +35,7 @@ function EditTodo() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axiosInstance.put(`/todo/${id}`, todo)
+        axiosInstance.put(`/todo/${id}`, todo,{ withCredentials: true })
             .then(() => {
                 alert('To-Do updated successfully!');
                 navigate('/');
