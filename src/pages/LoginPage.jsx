@@ -21,7 +21,10 @@ function LoginPage() {
             const response = await axios.post('https://todo-backend-rbvn.onrender.com/user/login', {
                 email,
                 password
-            });
+            }, {
+                withCredentials: true
+            }
+            );
 
             const { token, user } = response.data;
 
