@@ -17,6 +17,7 @@ function Header() {
             await persister.purge()
             dispatch(clearUser())
             navigate("/")
+            window.location.reload()
         } catch (error) {
             console.log(error);
         }
