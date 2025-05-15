@@ -19,7 +19,7 @@ function Signup() {
         setErrorMsg('');
 
         try {
-            const response = await axios.post('https://todo-backend-rbvn.onrender.com/api/auth/register', { email, password }, { withCredentials: true });
+            const response = await axios.post('https://todo-backend-rbvn.onrender.com/user/register', { email, password }, { withCredentials: true });
 
             const { token, user } = response.data;
 
