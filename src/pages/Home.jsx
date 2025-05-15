@@ -36,14 +36,14 @@ function Home() {
             <Header />
             <div style={{ padding: '20px' }}>
                 <h2>To-Do List</h2>
+
+                <Link to="/create" title="Add To-Do">
+                    <button style={{ padding: '10px', fontSize: '18px' }}>
+                        <FaPlus />
+                    </button>
+                </Link>
                 {isLoggedIn ? (
                     <>
-                        <Link to="/create" title="Add To-Do">
-                            <button style={{ padding: '10px', fontSize: '18px' }}>
-                                <FaPlus />
-                            </button>
-                        </Link>
-
                         <table border="1" cellPadding="10" cellSpacing="0" style={{ width: '100%', borderCollapse: 'collapse' }}>
                             <thead>
                                 <tr style={{ backgroundColor: '#f2f2f2' }}>
